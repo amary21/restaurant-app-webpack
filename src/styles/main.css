@@ -1,7 +1,3 @@
-/* img {
-    display: block;
-} */
-
 * {
     padding: 0;
     margin: 0;
@@ -12,11 +8,39 @@
 body{
     font-family: "Roboto", sans-serif;
 }
+
+/* 
+ * container 
+ */
 .container{
     width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
+@media (min-width: 1200px){
+    .container{
+        max-width: 1140px;
+    }
+}
+@media (max-width: 1200px){
+    .container{
+        max-width: 960;
+    }
+}
+@media(max-width: 768px){
+    .container{
+        max-width: 720px;
+    }
+}
+@media(max-width: 576px){
+    .container{
+        max-width: 540px;
+    }
+}
+
+/* 
+ * navigtaion bar 
+ */
 nav{
     background: #005792;
     height: 80px;
@@ -27,7 +51,7 @@ label.logo{
     font-size: 35px;
     line-height: 80px;
     font-weight: bold;
-    padding-left: 0 100%;
+    padding-left: 20px;
 }
 nav ul{
      float: right;
@@ -98,23 +122,60 @@ a.active, a:hover{
         width: 70%;
     }
 }
-@media (min-width: 1200px){
-    .container{
-        max-width: 1140px;
-    }
+
+/*
+ * Jumbotron
+ */
+
+.hero {
+    display: flex;
+    min-height: 576px!important;
+    width: 100%;
+    background-image: url("../public/images/heros/hero-image_4.jpg");
+    background-position: center;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-@media(max-width: 992px){
-    .container{
-        max-width: 960px;
-    }
+.hero__effect{
+    display: flex;
+    align-items: center;
+    min-height: 576px!important;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
 }
-@media(max-width: 768px){
-    .container{
-        max-width: 720px;
-    }
+.hero__inner {
+    margin: 0 auto;
+    max-width: 800px;
 }
-@media(max-width: 576px){
-    .container{
-        max-width: 540px;
-    }
+
+.hero__title {
+    color: #fff;
+    font-weight: 500;
+    font-size: 54px;
+}
+.hero__tagline {
+    color: #fff;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+/*
+ * footer
+ */
+
+ footer {
+    background-color: #005792;
+    padding: 2em;
+    width: 100%;
+    text-align: center;
+}
+footer p {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff
 }
