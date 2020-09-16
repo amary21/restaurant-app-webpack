@@ -4,6 +4,7 @@
     }
     nav {
         justify-content: flex-start;
+        background-color: #005792;
     }
     nav ul{
         display: block;

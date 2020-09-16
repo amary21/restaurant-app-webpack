@@ -20,11 +20,23 @@ body{
  */
 nav{
     display: flex;
-    background: #005792;
+    position: fixed;
+    width: 100%;
     justify-content: space-around;
     height: 80px;
+    background-color: transparent;
     align-items: center;
     color: white;
+}
+
+.nav-colored{
+    background-color: #005792;
+    transition: all 0.5s ease-in-out;
+}
+
+.nav-transparent{
+    background-color: transparent;
+    transition: all 0.5s ease-in-out;
 }
 
 nav ul{
