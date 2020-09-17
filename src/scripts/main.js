@@ -1,9 +1,11 @@
 import loadData from './load-data.js'
 
 const main = ()=>{
-    const menuToggle = document.querySelector('.menu-toggle input');
+    const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
     const navSideBar = document.querySelector('nav ul');
+    const bodyMain = document.querySelector('main');
+    const bodyHero = document.querySelector('.hero');
 
     const disableScroll = () => { 
         document.body.classList.add("stop-scrolling"); 
@@ -28,7 +30,6 @@ const main = ()=>{
             }
         };
     }
-    
 
     document.addEventListener("DOMContentLoaded", ()=>{
         menuToggle.addEventListener('click', ()=> {
@@ -38,6 +39,16 @@ const main = ()=>{
             } else {
                 enableScroll();
             }
+        });
+
+        bodyMain.addEventListener('click', ()=>{
+            navSideBar.classList.remove('slide');
+            enableScroll();
+        });
+
+        bodyHero.addEventListener('click', ()=>{
+            navSideBar.classList.remove('slide');
+            enableScroll();
         });
 
         changeColorNav();
