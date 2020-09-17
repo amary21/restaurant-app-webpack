@@ -1,3 +1,250 @@
-img {
-    display: block;
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+
+* {
+    padding: 0;
+    margin: 0;
 }
+
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+.logo h2 a{
+    color: white;
+    text-decoration: none;
+}
+
+
+/* 
+ * navbar 
+ */
+nav{
+    display: flex;
+    position: fixed;
+    width: 100%;
+    justify-content: space-around;
+    height: 80px;
+    background-color: transparent;
+    align-items: center;
+    color: white;
+}
+
+.nav-colored{
+    background-color: #005792;
+    transition: all 0.5s ease-in-out;
+}
+
+.nav-transparent{
+    background-color: transparent;
+    transition: all 0.5s ease-in-out;
+}
+
+nav ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-between;
+}
+
+nav ul li a{
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 24px;
+    text-decoration: none;
+}
+
+nav ul li a:hover{
+    background-color: #00bbf0;
+}
+
+/* 
+ * sidebar
+ */
+.menu-toggle {
+    display: none;
+    position: relative;
+}
+
+.menu-toggle input{
+    position: absolute;
+    opacity: 0;
+    width: 28px;
+    height: 40px;
+}
+
+.menu-toggle .checkbtn{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/*
+ * Jumbotron
+ */
+ .hero {
+    display: flex;
+    min-height: 576px!important;
+    width: 100%;
+    background-image: url("../public/images/heros/hero-image_4.jpg");
+    background-position: center;
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.hero__effect{
+    display: flex;
+    align-items: center;
+    min-height: 576px!important;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+}
+.hero__inner {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.hero__title {
+    color: #fff;
+    font-weight: 500;
+    font-size: 54px;
+}
+.hero__tagline {
+    color: #fff;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: 300;
+}
+
+/*
+ * main
+ */
+main {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/*
+ * content
+ */
+.content {
+    padding: 32px;
+}
+
+/*
+ * explore
+ */
+ .explore {
+    width: 100%;
+    margin: 60px auto;
+    text-align: center;
+}
+
+.explore__label {
+    font-size: 32px;
+    font-weight: lighter;
+}
+
+.explore__label::after {
+    content: '';
+    margin-top: 16px;
+    display: block;
+    border-bottom: 1px solid #000;
+}
+
+/*
+ * post
+ */
+ .posts {
+    margin: 32px auto auto;
+    text-align: left;
+    display: grid;
+    grid-row-gap: 16px;
+}
+
+/*
+ * post item
+ */
+.post-item {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post-item__content {
+    padding: 16px;
+}
+
+.post-item__thumbnail {
+    width: 100%;
+}
+.post-item__name {
+    font-weight: 500;
+    font-size: 24px;
+    transition: 0.3s opacity;
+}
+
+.post-item__name:hover {
+    opacity: 0.5;
+}
+
+.post-item__rate{
+    margin-top: 16px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.post-item__description {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 1.5em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+}
+
+/*
+ * footer
+ */
+ footer {
+    background-color: #005792;
+    width: 100%;
+    text-align: center;
+}
+footer p {
+    padding: 1em;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff
+}
+
+/*
+ * skip to content
+ */
+.skip-link {
+    position: absolute;
+    top: -80px;
+    left: 0;
+    background-color: #e94560;
+    color: wheat;
+    font-size: 21px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 10px;
+    z-index: 100;
+ }
+
+ .skip-link:focus {
+    top: 0;
+ }
+
+ .stop-scrolling { 
+    height: 100%; 
+    overflow: hidden; 
+} 
