@@ -16,4 +16,4 @@ const loadData = () => {
   });
 };
 
-export default loadData();
+export default loadData;

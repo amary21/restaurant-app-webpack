@@ -1,7 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
+const { SourceMapDevToolPlugin } = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -12,6 +14,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+      },
       {
         test: /\.css$/,
         use: [
@@ -25,10 +32,14 @@ module.exports = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
-        use: [
-            'file-loader',
-        ],
-      }
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'assets/images/heros',
+          },
+        }],
+      },
     ],
   },
   plugins: [
@@ -40,13 +51,49 @@ module.exports = {
       patterns: [
         {
           from: path.resolve(__dirname, 'src/public/'),
-          to: path.resolve(__dirname, 'dist/'),
+          to: path.resolve(__dirname, 'dist/assets'),
+        },
+      ],
+    }),
+    new workboxPlugin.GenerateSW({
+      cacheId: 'restohunt',
+      swDest: 'sw.js',
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:css|js|html|ttf|eot|woff|woff2|png|json|png|jpg|jpeg|svg)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'restohunt-assets',
+          },
         },
       ],
     }),
     new FaviconsWebpackPlugin({
-      logo: path.resolve(__dirname, 'src/public/images/icon/food.png'),
+      logo: path.resolve(__dirname, 'src/public/images/icons/food.png'),
+      publicPath: '/favicons',
+      outputPath: '/assets/favicons',
+      cache: true,
+      inject: true,
+      favicons: {
+        appName: 'Restaurant Hunter',
+        appShortName: 'RestoHunt',
+        appDescription: 'Restaurant Hunter',
+        theme_color: '#005792',
+        background: '#005792',
+        display: 'standalone',
+        developerName: 'amary',
+        start_url: '/index.html',
+        icons: {
+          coast: false,
+          yandex: false,
+        },
+      },
     }),
-    new CleanWebpackPlugin(), 
+    new SourceMapDevToolPlugin({
+      filename: '[file].map',
+    }),
+    new CleanWebpackPlugin(),
   ],
 };
