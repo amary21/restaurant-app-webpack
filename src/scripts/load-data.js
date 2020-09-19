@@ -7,8 +7,8 @@ const loadData = () => {
         itemElement.setAttribute("class", "post-item");
         itemElement.innerHTML = `<img class="post-item__thumbnail" src="${restaurant.pictureId}" alt="${restaurant.name}">
             <div class="post-item__content">
-                <h1 class="post-item__name">${restaurant.name} (${restaurant.city})</h1>
-                <h4 class="post-item__rate">${restaurant.rating}</h4>
+                <h2 class="post-item__name">${restaurant.name} (${restaurant.city})</h2>
+                <h3 class="post-item__rate">${restaurant.rating}</h3>
                 <p class="post-item__description">${restaurant.description}</p>
             </div>`;
         

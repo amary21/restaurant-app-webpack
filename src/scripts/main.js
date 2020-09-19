@@ -34,7 +34,7 @@ const main = ()=>{
     document.addEventListener("DOMContentLoaded", ()=>{
         menuToggle.addEventListener('click', ()=> {
             navSideBar.classList.toggle('slide');
-            if(navSideBar.className == 'slide'){
+            if(navSideBar.className === 'slide'){
                 disableScroll();
             } else {
                 enableScroll();
