@@ -1,22 +1,16 @@
 import loadData from './load-data';
+import registerSW from './register-sw';
 
-const main = () => {
+function main() {
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('nav');
   const navSideBar = document.querySelector('nav ul');
   const bodyMain = document.querySelector('main');
   const bodyHero = document.querySelector('.hero');
 
-  const disableScroll = () => {
-    document.body.classList.add('stop-scrolling');
-  };
-
-  const enableScroll = () => {
-    document.body.classList.remove('stop-scrolling');
-  };
-
+  const disableScroll = () => document.body.classList.add('stop-scrolling');
+  const enableScroll = () => document.body.classList.remove('stop-scrolling');
   const changeColorNav = () => {
-    const screen = Screen();
     window.onscroll = () => {
       if (screen.width > 576) {
         nav.classList.add('nav-colored');
@@ -32,6 +26,9 @@ const main = () => {
   };
 
   document.addEventListener('DOMContentLoaded', () => {
+    registerSW();
+    changeColorNav();
+    loadData();
     menuToggle.addEventListener('click', () => {
       navSideBar.classList.toggle('slide');
       if (navSideBar.className === 'slide') {
@@ -50,11 +47,7 @@ const main = () => {
       navSideBar.classList.remove('slide');
       enableScroll();
     });
-
-    changeColorNav();
-
-    loadData();
   });
-};
+}
 
-export default main();
+export default main;
