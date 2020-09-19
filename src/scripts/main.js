@@ -1,60 +1,60 @@
-import loadData from './load-data.js'
+import loadData from './load-data';
 
-const main = ()=>{
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    const navSideBar = document.querySelector('nav ul');
-    const bodyMain = document.querySelector('main');
-    const bodyHero = document.querySelector('.hero');
+const main = () => {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const nav = document.querySelector('nav');
+  const navSideBar = document.querySelector('nav ul');
+  const bodyMain = document.querySelector('main');
+  const bodyHero = document.querySelector('.hero');
 
-    const disableScroll = () => { 
-        document.body.classList.add("stop-scrolling"); 
-    } 
-      
-    const enableScroll = () => { 
-        document.body.classList.remove("stop-scrolling"); 
-    }
-    
-    const changeColorNav = () =>{
-        window.onscroll = () => {
-            if(screen.width > 576){
-                nav.classList.add("nav-colored");
-                if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200 ) {
-                    nav.classList.add("nav-colored");
-                    nav.classList.remove("nav-transparent");
-                } 
-                else {
-                    nav.classList.add("nav-transparent");
-                    nav.classList.remove("nav-colored");
-                }
-            }
-        };
-    }
+  const disableScroll = () => {
+    document.body.classList.add('stop-scrolling');
+  };
 
-    document.addEventListener("DOMContentLoaded", ()=>{
-        menuToggle.addEventListener('click', ()=> {
-            navSideBar.classList.toggle('slide');
-            if(navSideBar.className === 'slide'){
-                disableScroll();
-            } else {
-                enableScroll();
-            }
-        });
+  const enableScroll = () => {
+    document.body.classList.remove('stop-scrolling');
+  };
 
-        bodyMain.addEventListener('click', ()=>{
-            navSideBar.classList.remove('slide');
-            enableScroll();
-        });
+  const changeColorNav = () => {
+    const screen = Screen();
+    window.onscroll = () => {
+      if (screen.width > 576) {
+        nav.classList.add('nav-colored');
+        if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200) {
+          nav.classList.add('nav-colored');
+          nav.classList.remove('nav-transparent');
+        } else {
+          nav.classList.add('nav-transparent');
+          nav.classList.remove('nav-colored');
+        }
+      }
+    };
+  };
 
-        bodyHero.addEventListener('click', ()=>{
-            navSideBar.classList.remove('slide');
-            enableScroll();
-        });
+  document.addEventListener('DOMContentLoaded', () => {
+    menuToggle.addEventListener('click', () => {
+      navSideBar.classList.toggle('slide');
+      if (navSideBar.className === 'slide') {
+        disableScroll();
+      } else {
+        enableScroll();
+      }
+    });
 
-        changeColorNav();
+    bodyMain.addEventListener('click', () => {
+      navSideBar.classList.remove('slide');
+      enableScroll();
+    });
 
-        loadData();
-    })
-}
+    bodyHero.addEventListener('click', () => {
+      navSideBar.classList.remove('slide');
+      enableScroll();
+    });
 
-export default main;
+    changeColorNav();
+
+    loadData();
+  });
+};
+
+export default main();
