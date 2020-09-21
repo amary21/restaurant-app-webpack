@@ -47,6 +47,8 @@ function main() {
       navSideBar.classList.remove('slide');
       enableScroll();
     });
+
+    console.log(process.env.S3_API);
   });
 }
 

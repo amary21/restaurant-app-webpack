@@ -1,9 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-const workboxPlugin = require('workbox-webpack-plugin');
+const WebpackPwaManifest = require('webpack-pwa-manifest');
+const Dotenv = require('dotenv-webpack');
 const { SourceMapDevToolPlugin } = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const workboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -36,7 +37,7 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'assets/images/heros',
+            outputPath: 'images/heros',
           },
         }],
       },
@@ -46,12 +47,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
       filename: 'index.html',
+      favicon: path.join('src/public/images/icons/favicon.png'),
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: path.resolve(__dirname, 'src/public/'),
-          to: path.resolve(__dirname, 'dist/assets'),
+          to: path.resolve(__dirname, 'dist'),
         },
       ],
     }),
@@ -70,30 +72,31 @@ module.exports = {
         },
       ],
     }),
-    new FaviconsWebpackPlugin({
-      logo: path.resolve(__dirname, 'src/public/images/icons/food.png'),
-      publicPath: '/favicons',
-      outputPath: '/assets/favicons',
-      cache: true,
+    new WebpackPwaManifest({
+      name: 'Restaurant Hunter',
+      short_name: 'RestoHunt',
+      description: 'Restaurant Hunter',
+      theme_color: '#005792',
+      background_color: '#005792',
+      display: 'standalone',
+      fingerprints: false,
+      start_url: '/index.html',
       inject: true,
-      favicons: {
-        appName: 'Restaurant Hunter',
-        appShortName: 'RestoHunt',
-        appDescription: 'Restaurant Hunter',
-        theme_color: '#005792',
-        background: '#005792',
-        display: 'standalone',
-        developerName: 'amary',
-        start_url: '/index.html',
-        icons: {
-          coast: false,
-          yandex: false,
+      ios: true,
+      icons: [
+        {
+          src: path.resolve(__dirname, 'src/public/images/icons/favicon.png'),
+          sizes: [72, 96, 128, 144, 152, 192, 384, 512],
+          destination: path.join('images/icons'),
+          ios: true,
+          purpose: 'maskable',
         },
-      },
+      ],
     }),
     new SourceMapDevToolPlugin({
       filename: '[file].map',
     }),
+    new Dotenv(),
     new CleanWebpackPlugin(),
   ],
 };
