@@ -47,7 +47,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/templates/index.html'),
       filename: 'index.html',
-      favicon: path.join('src/public/images/icons/favicon.png'),
+      favicon: path.join('src/public/images/favicon.png'),
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -85,7 +85,7 @@ module.exports = {
       ios: true,
       icons: [
         {
-          src: path.resolve(__dirname, 'src/public/images/icons/favicon.png'),
+          src: path.resolve(__dirname, 'src/public/images/favicon.png'),
           sizes: [72, 96, 128, 144, 152, 192, 384, 512],
           destination: path.join('images/icons'),
           ios: true,

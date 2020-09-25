@@ -43,6 +43,7 @@
     "whatwg-fetch": "^3.2.0"
   },
   "dependencies": {
+    "@lottiefiles/lottie-player": "^0.5.1",
     "regenerator-runtime": "^0.13.5",
     "source-map-loader": "^1.1.0",
     "webpack-pwa-manifest": "^4.2.0",

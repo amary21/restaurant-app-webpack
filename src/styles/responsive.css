@@ -28,6 +28,9 @@
     .menu-toggle {
         margin: 16px;
     }
+    lottie-player{
+        padding: 0;
+    }
 }
 
 @media screen and (min-width: 650px) {
@@ -51,6 +54,13 @@
         grid-column-gap: 10px;
         grid-row-gap: 16px;
     }
+
+    menu-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 32px;
+        grid-row-gap: 16px;
+    }
 }
 
 @media screen and (min-width: 900px) {
@@ -61,7 +71,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-    main {
+    main section {
         max-width: 1200px;
     }
 }
