@@ -18,15 +18,10 @@ class Detail extends HTMLElement {
         <p class="detail__content">${this.restaurant.description}</p>
         <h4 class="explore__label">Menu</h4>
         <menu-list></menu-list>
-        <h4 class="explore__label">Review</h4>
-        <review-bar></review-bar>
         `;
 
     const menuElement = document.querySelector('menu-list');
     menuElement.dataMenus = this.restaurant.menus;
-
-    const reviewElement = document.querySelector('review-bar');
-    reviewElement.dataReviews = this.restaurant.consumerReviews;
   }
 }
 

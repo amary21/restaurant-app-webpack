@@ -5,7 +5,6 @@ class Review extends HTMLElement {
   }
 
   render() {
-    console.log(this.reviews);
     this.reviews.forEach((data) => {
       this.innerHTML += `
         <div class="review__item">

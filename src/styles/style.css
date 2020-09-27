@@ -150,6 +150,7 @@ main section {
 
 .explore__label {
     font-size: 32px;
+    text-align: center;
     font-weight: lighter;
 }
 
@@ -378,3 +379,44 @@ review-bar .review__item p{
     padding: 8px;
 }
 
+.form{
+    margin-top: 16px;
+    margin-bottom: 32px;
+    display: grid;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.form .form-group{
+    display: grid;
+    margin: 8px 16px 0 16px;
+}
+
+.form .form-control{
+    width: 100%;
+}
+
+.form input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 16px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form button {
+    width: 30%;
+    background-color: #00bbf0;
+    color: white;
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    border: none;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+}
