@@ -1,9 +1,11 @@
-import '../templates/components/view-bar';
-import '../templates/components/detail';
-import '../templates/components/review';
+import '../components/view-bar';
+import '../components/detail';
+import '../components/review';
+import '../components/add-review';
 import UrlParser from '../../routes/url-parser';
 import RemoteData from '../../data/remote-data';
 import NavbarListener from '../../utils/navbar-listener';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
   async render() {
@@ -12,20 +14,9 @@ const Detail = {
     <section class="content">
       <detail-content></detail-content>
       <h4 class="explore__label">Review</h4>
-      <div class="form">
-        <div class="form-group">
-          <label for="inputName">Name</label>
-          <input id="inputName" type="text" class="form-control" placeholder="Input Your Name">
-        </div>
-        <div class="form-group">
-            <label for="inputReview">Review</label>
-            <input id="inputReview" type="text" class="form-control" placeholder="Your Review">
-        </div>
-        <div class="form-group">
-          <button id="buttonAdd" class="btn btn-success">Add</button>
-        </div>
-      </div>
+      <add-review class="form"></add-review>
       <review-bar></review-bar>
+      <div id="likeButtonContainer"></div>
     </section>`;
   },
 
@@ -72,6 +63,18 @@ const Detail = {
 
     const reviewElement = document.querySelector('review-bar');
     reviewElement.dataReviews = restaurant.consumerReviews;
+
+    LikeButtonInitiator.init({
+      likeButtonContainer: document.querySelector('#likeButtonContainer'),
+      restaurant: {
+        id: restaurant.id,
+        name: restaurant.name,
+        description: restaurant.description,
+        pictureId: restaurant.pictureId,
+        city: restaurant.city,
+        rating: restaurant.rating,
+      },
+    });
   },
 };
 

@@ -1,5 +1,5 @@
-import '../templates/components/view-bar';
-import '../templates/components/resto-list';
+import '../components/view-bar';
+import '../components/resto-list';
 import * as urlImage from '../../../public/images/hero-image_4.jpg';
 import RemoteData from '../../data/remote-data';
 import NavbarListener from '../../utils/navbar-listener';
@@ -12,7 +12,6 @@ const Home = {
           <div class="explore">
               <h2 class="explore__label">Explore Restaurant</h2>
               <resto-list></resto-list>
-              </div>
           </div>
       </section>`;
   },

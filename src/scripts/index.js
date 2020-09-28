@@ -1,8 +1,9 @@
 import 'regenerator-runtime';
-import '@lottiefiles/lottie-player/dist/lottie-player';
+// import '@lottiefiles/lottie-player/dist/lottie-player';
 import '../styles/style.css';
 import '../styles/responsive.css';
-import './views/templates/components/nav-bar';
+import './views/components/nav-bar';
+import registerSW from './utils/register-sw';
 import App from './views/app';
 
 const app = new App({
@@ -17,4 +18,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  registerSW();
 });

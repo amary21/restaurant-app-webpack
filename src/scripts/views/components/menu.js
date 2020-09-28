@@ -1,5 +1,5 @@
-import * as urlImageFood from '../../../../public/images/menu-food.jpg';
-import * as urlImageDrink from '../../../../public/images/menu-drink.jpg';
+import * as urlImageFood from '../../../public/images/menu-food.jpg';
+import * as urlImageDrink from '../../../public/images/menu-drink.jpg';
 
 class Menu extends HTMLElement {
   set dataMenus(menu) {

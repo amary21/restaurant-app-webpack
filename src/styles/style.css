@@ -420,3 +420,24 @@ review-bar .review__item p{
     border-radius: 5px;
     cursor: pointer;
 }
+
+.like {
+    font-size: 18px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: #00bbf0;
+    color: white;
+    border: 0;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favorite__explore{
+    margin-top: 120px;
+}

@@ -1,21 +1,14 @@
-const registerSW = () => {
-  function registerServiceWorker() {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker
-        .register('./sw.js')
-        .then(() => {
-          console.log('Pendaftaran ServiceWorker berhasil');
-        })
-        .catch(() => {
-          console.log('Pendaftaran ServiceWorker gagal');
-        });
-    });
+const registerSW = async () => {
+  if (!('serviceWorker' in navigator)) {
+    console.log('Browser tidak mendukung Service Worker');
+    return;
   }
 
-  if ('serviceWorker' in navigator) {
-    registerServiceWorker();
-  } else {
-    console.log('ServiceWorker belum didukung browser ini.');
+  try {
+    await navigator.serviceWorker.register('./sw.js');
+    console.log('Service worker registered');
+  } catch (error) {
+    console.log('Failed to register service worker', error);
   }
 };
 

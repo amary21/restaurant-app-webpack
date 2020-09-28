@@ -48,6 +48,7 @@ module.exports = {
       template: path.resolve(__dirname, 'src/templates/index.html'),
       filename: 'index.html',
       favicon: path.join('src/public/images/favicon.png'),
+      theme_color: '#005792',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -70,6 +71,13 @@ module.exports = {
             cacheName: 'restohunt-assets',
           },
         },
+        {
+          urlPattern: new RegExp('https://dicoding-restaurant-api.el.r.appspot.com/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restohunt-api',
+          },
+        },
       ],
     }),
     new WebpackPwaManifest({
@@ -87,6 +95,12 @@ module.exports = {
         {
           src: path.resolve(__dirname, 'src/public/images/favicon.png'),
           sizes: [72, 96, 128, 144, 152, 192, 384, 512],
+          destination: path.join('images/icons'),
+          ios: true,
+        },
+        {
+          src: path.resolve(__dirname, 'src/public/images/favicon.png'),
+          sizes: '1024x1024',
           destination: path.join('images/icons'),
           ios: true,
           purpose: 'maskable',
