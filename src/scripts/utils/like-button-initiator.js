@@ -48,11 +48,12 @@ const LikeButtonInitiator = {
   },
 
   showSnackBar(message) {
+    const TIME_TO_OFF = 3000;
     this.snackBar.innerHTML = message;
     this.snackBar.className = 'show';
     setTimeout(() => {
       this.snackBar.className = this.snackBar.className.replace('show', '');
-    }, 3000);
+    }, TIME_TO_OFF);
   },
 };
 

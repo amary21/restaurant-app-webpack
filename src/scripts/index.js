@@ -1,5 +1,4 @@
 import 'regenerator-runtime';
-// import '@lottiefiles/lottie-player/dist/lottie-player';
 import '../styles/style.css';
 import '../styles/responsive.css';
 import './views/components/nav-bar';
