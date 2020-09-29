@@ -17,6 +17,7 @@ const Detail = {
       <add-review class="form"></add-review>
       <review-bar></review-bar>
       <div id="likeButtonContainer"></div>
+      <div id="snackbar"></div>
     </section>`;
   },
 
@@ -66,6 +67,7 @@ const Detail = {
 
     LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
+      snackBar: document.querySelector('#snackbar'),
       restaurant: {
         id: restaurant.id,
         name: restaurant.name,

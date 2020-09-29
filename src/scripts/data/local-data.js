@@ -1,7 +1,5 @@
 import { openDB } from 'idb';
 
-// const { DATABASE_NAME, DATABASE_VERSION, OBJECT_STORE_NAME } = process.env;
-
 const dbPromise = openDB(process.env.DATABASE_NAME, process.env.DATABASE_VERSION, {
   upgrade(database) {
     database.createObjectStore(process.env.OBJECT_STORE_NAME, { keyPath: 'id' });
