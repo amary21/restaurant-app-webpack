@@ -24,9 +24,6 @@ const Detail = {
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const nav = document.querySelector('nav');
-    NavbarListener.init({
-      navbar: nav,
-    });
 
     const buttonAdd = document.querySelector('#buttonAdd');
     const inputName = document.querySelector('#inputName');
@@ -40,43 +37,67 @@ const Detail = {
       this.insertReview(review);
     });
 
-    this.getDetail(url);
+    this.getDetail(url, nav);
   },
 
   async insertReview(review) {
     await RemoteData.addReview(review);
   },
 
-  async getDetail(url) {
+  async getDetail(url, nav) {
     const restaurant = await RemoteData.detailRestaurant(url.id);
-    const urlImage = process.env.BASE_URL_IMAGE + restaurant.pictureId;
+    console.log(restaurant);
+    if (restaurant !== null) {
+      NavbarListener.init({
+        navbar: nav,
+      });
 
-    const jumbotron = document.querySelector('.hero');
-    jumbotron.style.backgroundImage = `url("${urlImage}")`;
+      const urlImage = process.env.BASE_URL_IMAGE + restaurant.pictureId;
+      const jumbotron = document.querySelector('.hero');
+      jumbotron.style.backgroundImage = `url("${urlImage}")`;
 
-    const tagLine = document.querySelector('.hero__tagline');
-    const title = document.querySelector('.hero__title');
-    tagLine.innerHTML = restaurant.city;
-    title.innerHTML = restaurant.name;
+      const tagLine = document.querySelector('.hero__tagline');
+      const title = document.querySelector('.hero__title');
+      tagLine.innerHTML = restaurant.city;
+      title.innerHTML = restaurant.name;
 
-    const detailContent = document.querySelector('detail-content');
-    detailContent.dataRestaurant = restaurant;
+      const detailContent = document.querySelector('detail-content');
+      detailContent.dataRestaurant = restaurant;
 
-    const reviewElement = document.querySelector('review-bar');
-    reviewElement.dataReviews = restaurant.consumerReviews;
+      const reviewElement = document.querySelector('review-bar');
+      reviewElement.dataReviews = restaurant.consumerReviews;
 
-    LikeButtonInitiator.init({
-      likeButtonContainer: document.querySelector('#likeButtonContainer'),
-      snackBar: document.querySelector('#snackbar'),
-      restaurant: {
-        id: restaurant.id,
-        name: restaurant.name,
-        description: restaurant.description,
-        pictureId: restaurant.pictureId,
-        city: restaurant.city,
-        rating: restaurant.rating,
-      },
-    });
+      LikeButtonInitiator.init({
+        likeButtonContainer: document.querySelector('#likeButtonContainer'),
+        snackBar: document.querySelector('#snackbar'),
+        restaurant: {
+          id: restaurant.id,
+          name: restaurant.name,
+          description: restaurant.description,
+          pictureId: restaurant.pictureId,
+          city: restaurant.city,
+          rating: restaurant.rating,
+        },
+      });
+    } else {
+      nav.classList.remove('nav-transparent');
+      nav.classList.add('nav-colored');
+
+      const section = document.querySelector('section');
+      section.innerHTML = `<div id="not-found">
+          <div class="img__not-found"></div>
+          <h3 class="text__not-found">data is not available, please check your connection</h3>
+        </div>`;
+
+      const viewBar = document.querySelector('view-bar');
+      viewBar.style.display = 'none';
+
+      const notFoundElement = document.querySelector('#not-found');
+      notFoundElement.style.display = 'block';
+
+      const footer = document.querySelector('footer');
+      footer.style.display = 'none';
+    }
   },
 };
 

@@ -1,14 +1,20 @@
 class RemoteData {
   static async listRestaurants() {
     const response = await fetch(`${process.env.BASE_URL}list`);
-    const responseJson = await response.json();
-    return responseJson.restaurants;
+    if (response.status !== 404) {
+      const responseJson = await response.json();
+      return responseJson.restaurants;
+    }
+    return null;
   }
 
   static async detailRestaurant(id) {
     const response = await fetch(`${process.env.BASE_URL}detail/${id}`);
-    const responseJson = await response.json();
-    return responseJson.restaurant;
+    if (response.status !== 404) {
+      const responseJson = await response.json();
+      return responseJson.restaurant;
+    }
+    return null;
   }
 
   static async addReview(review) {

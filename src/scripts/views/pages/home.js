@@ -12,6 +12,10 @@ const Home = {
           <div class="explore">
               <h2 class="explore__label">Explore Restaurant</h2>
               <resto-list></resto-list>
+              <div id="not-found">
+                <div class="img__not-found"></div>
+                <h3 class="text__not-found">data is not available, please check your connection</h3>
+              </div>
           </div>
       </section>`;
   },
@@ -26,8 +30,14 @@ const Home = {
     });
 
     const listElement = document.querySelector('resto-list');
+    const notFoundElement = document.querySelector('#not-found');
     const listRestaurant = await RemoteData.listRestaurants();
-    listElement.dataRestaurants = listRestaurant;
+    if (listRestaurant !== null) {
+      listElement.dataRestaurants = listRestaurant;
+      notFoundElement.style.display = 'none';
+    } else {
+      notFoundElement.style.display = 'block';
+    }
   },
 };
 
