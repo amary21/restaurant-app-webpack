@@ -12,8 +12,8 @@ body{
     flex-direction: column;
 }
 
-/* 
- * navbar 
+/*
+ * navbar
  */
 nav{
     display: flex;
@@ -58,7 +58,7 @@ nav ul li a:hover{
     transition: 0.5s;
 }
 
-/* 
+/*
  * sidebar
  */
 .menu-toggle {
@@ -72,7 +72,7 @@ nav ul li a:hover{
     padding: 16px;
 }
 
-/* 
+/*
  * logo
  */
 .logo{
@@ -183,7 +183,6 @@ main section {
 
 .post-item a{
     text-decoration: none;
-    background-color: none;
     color: black;
 }
 
@@ -223,16 +222,6 @@ main section {
 }
 
 /*
- * lottie
- */
- lottie-player{
-    height: 560px; 
-    padding-top: 125px;
-    padding-bottom: 125px;
-    margin: 0 auto;
- }
-
-/*
  * footer
  */
  footer {
@@ -268,9 +257,9 @@ footer p {
     top: 0;
  }
 
- .stop-scrolling { 
-    height: 100%; 
-    overflow: hidden; 
+ .stop-scrolling {
+    height: 100%;
+    overflow: hidden;
 }
 
 detail-content .explore__label {
@@ -445,16 +434,16 @@ review-bar .review__item p{
 #snackbar {
     visibility: hidden;
     min-width: 250px;
-    margin-left: -125px; 
-    background-color: #333; 
-    color: #fff; 
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
     text-align: center;
     border-radius: 2px;
-    padding: 16px; 
-    position: fixed; 
-    z-index: 1; 
-    left: 50%; 
-    bottom: 30px; 
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
 }
 
 #snackbar.show {

@@ -28,9 +28,6 @@
     .menu-toggle {
         margin: 16px;
     }
-    lottie-player{
-        padding: 0;
-    }
 }
 
 @media screen and (min-width: 650px) {

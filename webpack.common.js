@@ -65,7 +65,7 @@ module.exports = {
       skipWaiting: true,
       runtimeCaching: [
         {
-          urlPattern: /\.(?:css|js|html|ttf|eot|woff|woff2|png|json|png|jpg|jpeg|svg)$/,
+          urlPattern: /\.(?:css|js|html|ttf|eot|woff|woff2|json|png|jpg|jpeg|svg)$/,
           handler: 'CacheFirst',
           options: {
             cacheName: 'restohunt-assets',

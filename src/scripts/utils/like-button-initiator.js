@@ -31,7 +31,7 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
       await LocalData.putRestaurant(this.restaurant);
-      this.renderButton();
+      await this.renderButton();
       this.showSnackBar('The Restaurant has been added');
     });
   },
@@ -42,7 +42,7 @@ const LikeButtonInitiator = {
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
       await LocalData.deleteRestaurant(this.restaurant.id);
-      this.renderButton();
+      await this.renderButton();
       this.showSnackBar('The Restaurant has been deleted');
     });
   },

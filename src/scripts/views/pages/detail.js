@@ -37,7 +37,7 @@ const Detail = {
       this.insertReview(review);
     });
 
-    this.getDetail(url, nav);
+    await this.getDetail(url, nav);
   },
 
   async insertReview(review) {
@@ -46,7 +46,6 @@ const Detail = {
 
   async getDetail(url, nav) {
     const restaurant = await RemoteData.detailRestaurant(url.id);
-    console.log(restaurant);
     if (restaurant !== null) {
       NavbarListener.init({
         navbar: nav,
@@ -67,7 +66,7 @@ const Detail = {
       const reviewElement = document.querySelector('review-bar');
       reviewElement.dataReviews = restaurant.consumerReviews;
 
-      LikeButtonInitiator.init({
+      await LikeButtonInitiator.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
         snackBar: document.querySelector('#snackbar'),
         restaurant: {

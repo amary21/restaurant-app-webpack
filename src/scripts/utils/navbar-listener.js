@@ -9,14 +9,14 @@ const NavbarListener = {
     if (screen.width > 576) {
       navbar.classList.add('nav-colored');
       if (document.body.scrollTop >= 200 || document.documentElement.scrollTop >= 200) {
-        this.collored(navbar);
+        this.colored(navbar);
       } else {
         this.colorless(navbar);
       }
     }
   },
 
-  collored(navbar) {
+  colored(navbar) {
     navbar.classList.add('nav-colored');
     navbar.classList.remove('nav-transparent');
   },
