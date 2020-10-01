@@ -11,6 +11,7 @@ const Home = {
       <section class="content" id="maincontent">
           <div class="explore">
               <h2 class="explore__label">Explore Restaurant</h2>
+              <div class="loader"></div>
               <resto-list></resto-list>
               <div id="not-found">
                 <div class="img__not-found"></div>
@@ -31,7 +32,9 @@ const Home = {
 
     const listElement = document.querySelector('resto-list');
     const notFoundElement = document.querySelector('#not-found');
+    const loadBar = document.querySelector('.loader');
     const listRestaurant = await RemoteData.listRestaurants();
+    loadBar.style.display = 'none';
     if (listRestaurant !== null) {
       listElement.dataRestaurants = listRestaurant;
       notFoundElement.style.display = 'none';

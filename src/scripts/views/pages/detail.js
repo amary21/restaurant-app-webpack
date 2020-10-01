@@ -12,6 +12,7 @@ const Detail = {
     return `
     <view-bar></view-bar>
     <section class="content">
+      <div class="loader"></div>
       <detail-content></detail-content>
       <h4 class="explore__label">Review</h4>
       <add-review class="form"></add-review>
