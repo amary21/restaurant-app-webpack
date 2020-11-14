@@ -6,6 +6,7 @@ import UrlParser from '../../routes/url-parser';
 import RemoteData from '../../data/remote-data';
 import NavbarListener from '../../utils/navbar-listener';
 import LikeButtonPresenter from '../../utils/like-button-presenter';
+import LocalData from '../../data/local-data';
 
 const Detail = {
   async render() {
@@ -72,6 +73,7 @@ const Detail = {
       await LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
         snackBar: document.querySelector('#snackbar'),
+        favoriteRestaurant: LocalData,
         restaurant: {
           id: restaurant.id,
           name: restaurant.name,
@@ -79,7 +81,7 @@ const Detail = {
           pictureId: restaurant.pictureId,
           city: restaurant.city,
           rating: restaurant.rating,
-        },
+        }
       });
     } else {
       nav.classList.remove('nav-transparent');

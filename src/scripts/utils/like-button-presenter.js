@@ -1,11 +1,11 @@
-import LocalData from '../data/local-data';
 import { createLikeRestoButtonTemplate, createUnlikeRestoButtonTemplate } from '../views/templates/tempate-creator';
 
 const LikeButtonPresenter = {
-  async init({ likeButtonContainer, snackBar, restaurant }) {
+  async init({ likeButtonContainer, snackBar, restaurant, favoriteRestaurant }) {
     this.likeButtonContainer = likeButtonContainer;
     this.snackBar = snackBar;
     this.restaurant = restaurant;
+    this.favoriteRestaurant = favoriteRestaurant;
 
     await this.renderButton();
   },
@@ -21,7 +21,7 @@ const LikeButtonPresenter = {
   },
 
   async isRestaurantExist(id) {
-    const restaurant = await LocalData.getRestaurant(id);
+    const restaurant = await this.favoriteRestaurant.getRestaurant(id);
     return !!restaurant;
   },
 
@@ -30,7 +30,7 @@ const LikeButtonPresenter = {
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await LocalData.putRestaurant(this.restaurant);
+      await this.favoriteRestaurant.putRestaurant(this.restaurant);
       await this.renderButton();
       this.showSnackBar('The Restaurant has been added');
     });
@@ -41,7 +41,7 @@ const LikeButtonPresenter = {
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
-      await LocalData.deleteRestaurant(this.restaurant.id);
+      await this.favoriteRestaurant.deleteRestaurant(this.restaurant.id);
       await this.renderButton();
       this.showSnackBar('The Restaurant has been deleted');
     });
