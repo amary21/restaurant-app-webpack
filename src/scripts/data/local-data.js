@@ -8,12 +8,20 @@ const dbPromise = openDB(process.env.DATABASE_NAME, process.env.DATABASE_VERSION
 
 const LocalData = {
   async getRestaurant(id) {
+    if (!id) {
+      return;
+    }
+
     return (await dbPromise).get(process.env.OBJECT_STORE_NAME, id);
   },
   async getAllRestaurants() {
     return (await dbPromise).getAll(process.env.OBJECT_STORE_NAME);
   },
   async putRestaurant(restaurant) {
+    if (!restaurant.hasOwnProperty('id')) {
+      return;
+    }
+
     return (await dbPromise).put(process.env.OBJECT_STORE_NAME, restaurant);
   },
   async deleteRestaurant(id) {

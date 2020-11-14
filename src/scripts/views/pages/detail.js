@@ -5,7 +5,7 @@ import '../components/add-review';
 import UrlParser from '../../routes/url-parser';
 import RemoteData from '../../data/remote-data';
 import NavbarListener from '../../utils/navbar-listener';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 
 const Detail = {
   async render() {
@@ -47,11 +47,13 @@ const Detail = {
 
   async getDetail(url, nav) {
     const restaurant = await RemoteData.detailRestaurant(url.id);
+    const loadBar = document.querySelector('.loader');
     if (restaurant !== null) {
       NavbarListener.init({
         navbar: nav,
       });
 
+      loadBar.style.display = 'none';
       const urlImage = process.env.BASE_URL_IMAGE + restaurant.pictureId;
       const jumbotron = document.querySelector('.hero');
       jumbotron.style.backgroundImage = `url("${urlImage}")`;
@@ -65,9 +67,9 @@ const Detail = {
       detailContent.dataRestaurant = restaurant;
 
       const reviewElement = document.querySelector('review-bar');
-      reviewElement.dataReviews = restaurant.consumerReviews;
+      reviewElement.dataReviews = restaurant.customerReviews;
 
-      await LikeButtonInitiator.init({
+      await LikeButtonPresenter.init({
         likeButtonContainer: document.querySelector('#likeButtonContainer'),
         snackBar: document.querySelector('#snackbar'),
         restaurant: {
@@ -82,6 +84,7 @@ const Detail = {
     } else {
       nav.classList.remove('nav-transparent');
       nav.classList.add('nav-colored');
+      loadBar.style.display = 'none';
 
       const section = document.querySelector('section');
       section.innerHTML = `<div id="not-found">

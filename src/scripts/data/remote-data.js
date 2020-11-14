@@ -9,7 +9,7 @@ class RemoteData {
   }
 
   static async detailRestaurant(id) {
-    const response = await fetch(`${process.env.BASE_URL}details/${id}`);
+    const response = await fetch(`${process.env.BASE_URL}detail/${id}`);
     if (response.status === 200) {
       const responseJson = await response.json();
       return responseJson.restaurant;

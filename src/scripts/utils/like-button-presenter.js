@@ -1,7 +1,7 @@
 import LocalData from '../data/local-data';
-import { createLikeButtonTemplate, createLikedButtonTemplate } from '../views/templates/tempate-creator';
+import { createLikeRestoButtonTemplate, createUnlikeRestoButtonTemplate } from '../views/templates/tempate-creator';
 
-const LikeButtonInitiator = {
+const LikeButtonPresenter = {
   async init({ likeButtonContainer, snackBar, restaurant }) {
     this.likeButtonContainer = likeButtonContainer;
     this.snackBar = snackBar;
@@ -26,7 +26,7 @@ const LikeButtonInitiator = {
   },
 
   renderLike() {
-    this.likeButtonContainer.innerHTML = createLikeButtonTemplate();
+    this.likeButtonContainer.innerHTML = createLikeRestoButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
@@ -37,7 +37,7 @@ const LikeButtonInitiator = {
   },
 
   renderLiked() {
-    this.likeButtonContainer.innerHTML = createLikedButtonTemplate();
+    this.likeButtonContainer.innerHTML = createUnlikeRestoButtonTemplate();
 
     const likeButton = document.querySelector('#likeButton');
     likeButton.addEventListener('click', async () => {
@@ -57,4 +57,4 @@ const LikeButtonInitiator = {
   },
 };
 
-export default LikeButtonInitiator;
+export default LikeButtonPresenter;
