@@ -1,6 +1,5 @@
 import '../components/resto-list';
 import LocalData from '../../data/local-data';
-import * as urlImage from '../../../public/images/hero-image_6.jpg';
 import NavbarListener from '../../utils/navbar-listener';
 
 const Favorite = {
@@ -21,7 +20,7 @@ const Favorite = {
 
   async afterRender() {
     const jumbotron = document.querySelector('.hero');
-    jumbotron.style.backgroundImage = `url("${urlImage.default}")`;
+    jumbotron.classList.add('hero__favorite');
 
     const tagLine = document.querySelector('.hero__tagline');
     const title = document.querySelector('.hero__title');

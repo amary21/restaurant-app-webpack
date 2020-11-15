@@ -7,6 +7,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const workboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
+const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
+const ImageminMozjpeg = require('imagemin-mozjpeg');
+const imageminPngquant = require('imagemin-pngquant');
+
 module.exports = {
   entry: path.resolve(__dirname, 'src/scripts/index.js'),
   output: {
@@ -64,20 +68,20 @@ module.exports = {
       clientsClaim: true,
       skipWaiting: true,
       runtimeCaching: [
-        // {
-        //   urlPattern: /\.(?:css|js|html|ttf|eot|woff|woff2|json|png|jpg|jpeg|svg)$/,
-        //   handler: 'CacheFirst',
-        //   options: {
-        //     cacheName: 'restohunt-assets',
-        //   },
-        // },
-        // {
-        //   urlPattern: new RegExp('https://dicoding-restaurant-api.el.r.appspot.com/'),
-        //   handler: 'StaleWhileRevalidate',
-        //   options: {
-        //     cacheName: 'restohunt-api',
-        //   },
-        // },
+        {
+          urlPattern: /\.(?:css|js|html|ttf|eot|woff|woff2|json|png|jpg|jpeg|svg)$/,
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'restohunt-assets',
+          },
+        },
+        {
+          urlPattern: new RegExp('https://dicoding-restaurant-api.el.r.appspot.com/'),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restohunt-api',
+          },
+        },
       ],
     }),
     new WebpackPwaManifest({
@@ -112,5 +116,14 @@ module.exports = {
     }),
     new Dotenv(),
     new CleanWebpackPlugin(),
+    new ImageminWebpackPlugin({
+      plugins: [
+        ImageminMozjpeg({
+          quality: 50,
+          progressive: true
+        }),
+        imageminPngquant()
+      ]
+    }),
   ],
 };

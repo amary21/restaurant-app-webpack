@@ -1,6 +1,5 @@
 import '../components/view-bar';
 import '../components/resto-list';
-import * as urlImage from '../../../public/images/hero-image_4.jpg';
 import RemoteData from '../../data/remote-data';
 import NavbarListener from '../../utils/navbar-listener';
 
@@ -23,7 +22,7 @@ const Home = {
 
   async afterRender() {
     const jumbotron = document.querySelector('.hero');
-    jumbotron.style.backgroundImage = `url("${urlImage.default}")`;
+    jumbotron.classList.add('hero__home');
 
     const nav = document.querySelector('nav');
     NavbarListener.init({

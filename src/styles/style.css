@@ -121,6 +121,14 @@ nav ul li a:hover{
     font-weight: 300;
 }
 
+.hero__home {
+    background-image: url('../public/images/hero-image_4.jpg');
+}
+
+.hero__favorite {
+    background-image: url('../public/images/hero-image_6.jpg');
+}
+
 /*
  * main
  */
@@ -309,6 +317,14 @@ menu-list .menu__effect{
     width: 100%;
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
+}
+
+menu-list .menu__food{
+    background-image: url('../public/images/menu-food.jpg');
+}
+
+menu-list .menu__drink{
+    background-image: url('../public/images/menu-drink.jpg');
 }
 
 menu-list .menu__effect h5{
